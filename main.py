@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from typing import Optional, List, Dict, Any
 
 import requests
@@ -6,6 +7,8 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 # Optional OpenAI (used only if /explain endpoint is called)
 try:
@@ -85,6 +88,12 @@ if OPENAI_API_KEY and OpenAI is not None:
 # FastAPI app
 # -------------------------------------------------
 app = FastAPI(title="Crop Disease Cure App (MVP)")
+BASE_DIR = Path(__file__).resolve().parent
+
+@app.get("/", response_class=HTMLResponse)
+def serve_frontend():
+    html_path = BASE_DIR / "index.html"
+    return html_path.read_text(encoding="utf-8")
 
 app.add_middleware(
     CORSMiddleware,
