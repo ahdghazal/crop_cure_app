@@ -18,9 +18,7 @@
       --border: #e0e0e0;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -63,9 +61,7 @@
     }
 
     @media (max-width: 768px) {
-      .upload-area {
-        grid-template-columns: 1fr;
-      }
+      .upload-area { grid-template-columns: 1fr; }
     }
 
     .image-preview {
@@ -110,9 +106,7 @@
       transition: background 0.2s ease;
     }
 
-    button:hover {
-      background: var(--dark-green);
-    }
+    button:hover { background: var(--dark-green); }
 
     .result {
       margin-top: 20px;
@@ -121,14 +115,6 @@
       background: #eef8f2;
       border-left: 6px solid var(--green);
       display: none;
-    }
-
-    .result strong {
-      color: var(--dark-green);
-    }
-
-    ul {
-      padding-left: 18px;
     }
 
     footer {
@@ -145,17 +131,14 @@
 <div class="container">
   <h1>🌱 AI Crop Disease Advisor</h1>
 
-  <!-- Diagnosis Card -->
   <div class="card">
     <h2>📸 Upload Crop Image</h2>
 
     <div class="upload-area">
-      <!-- Image Preview -->
       <div class="image-preview" id="imagePreview">
         <span>No image selected</span>
       </div>
 
-      <!-- Controls -->
       <div class="controls">
         <input type="file" id="imageInput" accept="image/*">
         <button onclick="analyzeImage()">Analyze Image</button>
@@ -171,12 +154,17 @@
 </div>
 
 <script>
-  const BACKEND_URL = "http://127.0.0.1:8000"; // change when deployed
+  // ✅ SMART BACKEND DETECTION
+  const BACKEND_URL =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+      ? "http://127.0.0.1:8000"
+      : "https://crop-cure-app.onrender.com";
+
   const imageInput = document.getElementById("imageInput");
   const imagePreview = document.getElementById("imagePreview");
   const resultBox = document.getElementById("resultBox");
 
-  // Show image preview
   imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
     if (!file) return;
@@ -195,7 +183,7 @@
     }
 
     resultBox.style.display = "block";
-    resultBox.innerHTML = "<strong>Analyzing image…</strong>";
+    resultBox.innerHTML = "<strong>Analyzing image… please wait ⏳</strong>";
 
     const formData = new FormData();
     formData.append("file", imageInput.files[0]);
@@ -218,7 +206,7 @@
         productsHTML = `
           <ul>
             ${data.recommended_products.map(p =>
-              `<li><strong>${p.name}</strong> – ${p.notes || ""} <br><small>${p.dosage || ""}</small></li>`
+              `<li><strong>${p.name}</strong> – ${p.notes || ""}<br><small>${p.dosage || ""}</small></li>`
             ).join("")}
           </ul>
         `;
@@ -232,7 +220,6 @@
         <strong>Recommended Treatment:</strong>
         ${productsHTML}
       `;
-
     } catch (err) {
       resultBox.innerHTML = "❌ Failed to connect to the server.";
     }
