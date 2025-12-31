@@ -35,45 +35,181 @@ if not DIAGNOSIS_API_KEY:
 # Disease → Product Mapping (INLINE, NO FILE)
 # -------------------------------------------------
 DISEASE_MAP: Dict[str, Dict[str, Any]] = {
+
+    # ======================
+    # RICE DISEASES
+    # ======================
     "rice blast": {
         "products": [
             {
                 "name": "Blast Force",
                 "type": "Fungicide",
-                "notes": "Preventive and curative fungicide for rice blast disease.",
+                "notes": "Preventive and curative fungicide specifically formulated to control rice blast disease.",
                 "dosage": "30g sachet per 15L knapsack sprayer",
             }
         ]
     },
+
+    "brown spot (rice)": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Controls fungal leaf diseases including brown spot in rice.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    "sheath blight": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Effective against sheath blight and related fungal infections in cereals.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    # ======================
+    # CEREALS (MAIZE, WHEAT, SORGHUM)
+    # ======================
     "ergot": {
         "products": [
             {
                 "name": "Fungi Care",
                 "type": "Fungicide",
-                "notes": "Broad-spectrum fungicide effective against fungal diseases.",
+                "notes": "Broad-spectrum fungicide effective against ergot and other fungal diseases in cereals.",
                 "dosage": "Refer to product label",
             }
         ]
     },
+
+    "leaf blight": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Controls leaf blight diseases caused by fungal pathogens.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    "leaf spot": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Used to manage fungal leaf spot diseases across multiple crops.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    # ======================
+    # FRUIT TREES (MANGO, CITRUS, ETC.)
+    # ======================
     "anthracnose": {
         "products": [
             {
                 "name": "Fungi Care",
                 "type": "Fungicide",
-                "notes": "Controls anthracnose and related fungal infections.",
+                "notes": "Controls anthracnose disease in mango and other fruit trees.",
                 "dosage": "Refer to product label",
             }
         ]
     },
+
+    "mango scab": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Effective against mango scab and associated fungal infections.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
     "powdery mildew": {
         "products": [
             {
                 "name": "Fungi Care",
                 "type": "Fungicide",
-                "notes": "Curative fungicide for powdery mildew.",
+                "notes": "Curative fungicide for powdery mildew on fruits, vegetables, and field crops.",
                 "dosage": "Refer to product label",
             }
         ]
+    },
+
+    "downy mildew": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Controls downy mildew and other moisture-related fungal diseases.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    # ======================
+    # VEGETABLE CROPS
+    # ======================
+    "early blight": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Helps manage early blight in vegetables such as tomato and potato.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    "late blight": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Provides protection against late blight under high disease pressure.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    # ======================
+    # STEM / ROOT DISEASES
+    # ======================
+    "stem rot": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Controls stem rot and basal rot diseases caused by fungal pathogens.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    "root rot": {
+        "products": [
+            {
+                "name": "Fungi Care",
+                "type": "Fungicide",
+                "notes": "Used to manage fungal root rot diseases in various crops.",
+                "dosage": "Refer to product label",
+            }
+        ]
+    },
+
+    # ======================
+    # FALLBACK / UNKNOWN
+    # ======================
+    "unknown": {
+        "products": []
     },
 }
 
